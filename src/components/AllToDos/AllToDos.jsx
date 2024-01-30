@@ -40,8 +40,7 @@ const AllToDos = () => {
                         </li>  
                     })} 
                 </ul>
-                {
-                    <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
+                {isloading === -1 && <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
                         Load ToDos
                     </Button>
                 }
@@ -50,6 +49,11 @@ const AllToDos = () => {
                         Loading...
                     </Button>
                 } 
+                {isloading === 0 && (
+                    <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
+                        Load ToDos
+                    </Button>
+                )}
             </Grid>
         </Grid>
     );
