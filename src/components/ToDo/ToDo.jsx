@@ -34,7 +34,7 @@ const ToDo = () => {
       },
     };
 
-    axios.post("https://merntodo-psi.vercel.app/api/users/addtodo", toDo, config)
+    axios.post("http://127.0.0.1:5000/api/users/addtodo", toDo, config)
       .then((res) => {
         toast.success(res.data.message); 
       })
