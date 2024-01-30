@@ -15,7 +15,7 @@ const AllToDos = () => {
 
     const loadtodos = () => {
     setLoading(1); 
-    axios.get("http://127.0.0.1:5000/api/users/loadtodo", {
+    axios.get("https://merntodo-psi.vercel.app/api/users/loadtodo", {
       headers: {
         Authorization: `Bearer ${token}`, // Add the Authorization header with the token
       },
