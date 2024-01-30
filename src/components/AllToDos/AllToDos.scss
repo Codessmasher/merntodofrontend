@@ -1,0 +1,10 @@
+/* Add this to your AllToDos.scss file or your preferred CSS file */
+@keyframes rotateAnimation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
