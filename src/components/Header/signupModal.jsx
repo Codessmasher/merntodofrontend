@@ -35,7 +35,7 @@ export default function SignupModal({ open, handleOpen, handleClose }) {
     }
 
     // Send the form data to the Express server
-    axios.post("http://127.0.0.1:5000/api/users/signup",formData) 
+    axios.post("https://merntodo-psi.vercel.app/api/users/signup",formData) 
       .then((res) => {
         // Handle the response from the server, if needed
         // if(!isEmail(formData.email)){
