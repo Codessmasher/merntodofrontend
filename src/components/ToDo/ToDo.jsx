@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import "./ToDo.scss";
 import AllToDos from '../AllToDos/AllToDos'; 
 import axios from 'axios'; 
@@ -6,7 +6,9 @@ import { Grid, Button, TextField } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
+
 const ToDo = () => {
+
   const [toDo, setToDo] = useState({});
 
   const handleChange = (e) => {
@@ -34,8 +36,9 @@ const ToDo = () => {
       },
     };
 
-    axios.post("https://merntodo-psi.vercel.app/api/users/addtodo", toDo, config)
-      .then((res) => {
+    axios.post("https://merntodofrontend-rosy.vercel.app/api/users/addtodo", toDo, config)
+      .then((res) => { 
+        <AllToDos/>  
         toast.success(res.data.message); 
       })
       .catch((error) => {
