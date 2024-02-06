@@ -6,10 +6,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import SignupModal from './signupModal';
 import SigninModal from './signinModal'; 
-
-const Header = () => { 
-  const token = localStorage.getItem("jwttoken"); 
-  
+ 
+const Header = () => {
+  const [token, setToken] = useState(localStorage.getItem("jwttoken"));
   const [issignupModalOpen, setIssignupModalOpen] = useState(false);
   const [issigninModalOpen, setIssigninModalOpen] = useState(false);
 
@@ -21,7 +20,7 @@ const Header = () => {
     setIssignupModalOpen(false); // Set the state to false to close the modal
   }
 
-  const handleOpensignin = () => {
+  const handleOpensignin = () => { 
     setIssigninModalOpen(true); // Set the state to true to open the modal
   }
 
@@ -30,8 +29,12 @@ const Header = () => {
   }
   const handleLogout = () => {
     localStorage.removeItem("jwttoken"); // logout
-    window.location.reload();//temp solution
+    setToken(0)//temp solution
   }
+
+  const updateToken = (newToken) => {
+    setToken(newToken);
+  };
 
   return (
     <>
@@ -44,7 +47,6 @@ const Header = () => {
           </Grid>}
           {!token &&
             <Grid item>
-
               <Button startIcon={<LoginIcon />} variant="contained" color="success" onClick={handleOpen}>
                 Signup
               </Button>
@@ -58,10 +60,10 @@ const Header = () => {
         </Grid>
 
         <SignupModal open={issignupModalOpen} handleOpen={handleOpen} handleClose={handleClose} />
-        <SigninModal open={issigninModalOpen} handleOpen={handleOpensignin} handleClose={handleClosesignin} />
+        <SigninModal open={issigninModalOpen} handleOpen={handleOpensignin} handleClose={handleClosesignin} updateToken={updateToken} />
       </div>
     </>
   );
 };
 
-export default Header;
+export default Header; 
