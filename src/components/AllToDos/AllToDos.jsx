@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import "./AllToDos.scss";
 import { Grid, Button, TextField } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh'; 
@@ -12,10 +12,12 @@ const token=localStorage.getItem('jwttoken');
 const AllToDos = () => {
     const [load, setLoad] = useState();
     const [isloading, setLoading] = useState(-1);
-
+    useEffect(() => {
+        loadtodos();
+      }, []);
     const loadtodos = () => {
     setLoading(1); 
-    axios.get("https://merntodo-psi.vercel.app/api/users/loadtodo", {
+    axios.get("https://merntodofrontend-rosy.vercel.app/api/users/loadtodo", {
       headers: {
         Authorization: `Bearer ${token}`, // Add the Authorization header with the token
       },
@@ -40,20 +42,20 @@ const AllToDos = () => {
                         </li>  
                     })} 
                 </ul>
-                {isloading === -1 && <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
+                {/* {isloading === -1 && <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
                         Load ToDos
                     </Button>
-                }
-                {isloading === 1 &&
+                } */}
+                {/* {isloading === 1 &&
                     <Button startIcon={<RefreshIcon style={{ animation: "rotateAnimation 1s infinite" }} />} variant="outlined" color="info" onClick={loadtodos}>
                         Loading...
                     </Button>
                 } 
                 {isloading === 0 && (
                     <Button startIcon={<RefreshIcon />} variant="outlined" color="info" onClick={loadtodos}>
-                        Load ToDos
+                        Load ToDos Again
                     </Button>
-                )}
+                )} */}
             </Grid>
         </Grid>
     );
